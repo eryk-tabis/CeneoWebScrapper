@@ -57,7 +57,7 @@ def extract(product_id):
             url = None
     with open(f"app/opinions/{product_id}.json", 'w', encoding="UTF-8") as jf:
         json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
-    return redirect(url_for("product", product_id))
+    return redirect(url_for("product", product_id=product_id))
 @app.route('/products')
 def products():
     products = [filename.split(".")[0] for filename in os.listdir("app/opinions")]
