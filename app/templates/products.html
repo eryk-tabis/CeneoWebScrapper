@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h2>Lista produktów</h2>
     <ul class="list-group">
     {% for product in products %}
       <li class="list-group-item d-flex justify-content-between align-items-center">
-          {{ product }}
-        <span class="badge badge-primary badge-pill">{{ loop.index }}</span>
+          <a class="nav-link" href="{{ url_for("product", product_id=product) }}">{{ product }}</a>
+        <span class="badge bg-primary rounded-pill">{{ loop.index }}</span>
       </li>
     {% endfor %}
 </ul>

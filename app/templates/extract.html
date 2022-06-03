@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form  method="POST" action="{{ url_for('extract') }}">
+  <div class="mb-3">
+      <label for="product_id" class="form-label">Kod produktu</label>
+    <input type="text" class="form-control-plaintext" id="product_id" name="product_id" placeholder="Podaj kod produktu z Ceneo.pl">
+  </div>
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary mb-3">Pobierz</button>
+  </div>
+</form>
+{% endblock %}
