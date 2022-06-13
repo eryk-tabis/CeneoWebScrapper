@@ -19,6 +19,9 @@ def extract():
         product_id = request.form.get("product_id")
         product = Product(product_id)
         product.extract_product()
+        product.save_opinions()
+        product.process_stats()
+        product.save_stats()
 
         return redirect(url_for("product", product_id=product_id))
     else:
@@ -34,7 +37,6 @@ def author():
 @app.route('/product/<product_id>')
 def product(product_id):
     opinions = pd.read_json(f'app/opinions/{product_id}.json')
-    print(opinions)
     opinions.score = opinions.score.map(lambda x: float(x.split("/")[0].replace(',', '.')))
     stats = {
     "opinions_count": len(opinions.index),

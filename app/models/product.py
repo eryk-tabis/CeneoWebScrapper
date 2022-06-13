@@ -6,7 +6,7 @@ from ..utils import get_item
 from .opinion import Opinion
 
 class Product:
-    def __init__(self, product_id, product_name=None, opinions=None, opinions_count=None, pros_count=None, cons_count=None, average_score=None):
+    def __init__(self, product_id, product_name=None, opinions=[], opinions_count=None, pros_count=None, cons_count=None, average_score=None):
         self.product_id = product_id
         self.product_name = product_name
         self.opinions = opinions
@@ -35,11 +35,10 @@ class Product:
                 url = None
 
     def process_stats(self):
-        self.opinions.score = self.opinions.score.map(lambda x: float(x.split("/")[0].replace(',', '.')))
-        self.opinions_count = len(self.opinions.index)
+        self.opinions_count = len(self.opinions)
         self.pros_count = self.opinions.pros.map(bool).sum()
-        self.cons_count =  self.opinions.cons.map(bool).sum()
-        self.average_score =  self.opinions.score.mean().round(2)
+        self.cons_count = self.opinions.cons.map(bool).sum()
+        self.average_score = self.opinions.score.mean().round(2)
         return self
     def save_opinions(self):
         if not os.path.exists("app/opinions"):
