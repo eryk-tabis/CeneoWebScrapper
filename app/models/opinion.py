@@ -14,10 +14,24 @@ class Opinion:
         self.publish_date = purchase_date
 
     def __str__(self):
-        pass
+        return f'Author is {self.author},' \
+               f' recomendation is {self.recomendation},' \
+               f' score is {self.score}, pros is {self.pros},' \
+               f' cons is {self.cons}, usefull is {self.usefull},' \
+               f' useless is {self.useless},' \
+               f' publish date is {self.publish_date},' \
+               f' purchase date is {self.purchase_date}'
 
     def __repr__(self):
-        pass
+        return f'(Author {self.author}),' \
+               f' (Recomendation {self.recomendation}),' \
+               f' (Score {self.score}),' \
+               f' (Pros {self.pros}),' \
+               f' (Cons {self.cons}),' \
+               f' (Usefull {self.usefull}),' \
+               f' (Useless {self.useless}),' \
+               f' (Publish date {self.publish_date}),' \
+               f' (Purchase date {self.purchase_date})'
 
     def to_dict(self):
         return {
