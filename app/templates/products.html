@@ -4,10 +4,27 @@
     <h2>Lista produktów</h2>
     <ul class="list-group">
     {% for product in products %}
+    <li>
       <li class="list-group-item d-flex justify-content-between align-items-center">
-          <a class="nav-link" href="{{ url_for("product", product_id=product) }}">{{ product }}</a>
-        <span class="badge bg-primary rounded-pill">{{ loop.index }}</span>
+          <a class="nav-link" href="{{ url_for("product", product_id=product.product_id) }}">{{ product.product_name }}</a>
       </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+    Ilość opinii
+        <span class="badge bg-warning rounded-pill float-right">{{ product.opinions_count }}</span>
+      </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+    Ilość zalet
+        <span class="badge bg-warning rounded-pill float-right">{{ product.pros_count }}</span>
+      </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+    Ilość wad
+        <span class="badge bg-warning rounded-pill float-right">{{ product.cons_count }}</span>
+      </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+          Średnia ocena
+        <span class="badge bg-warning rounded-pill float-right">{{ product.average_score }}</span>
+      </li>
+    </li>
     {% endfor %}
 </ul>
 

@@ -7,5 +7,5 @@ selectors = {
     "usefull": ["button.vote-yes > span"],
     "useless": ["button.vote-no > span"],
     "publish_date": ["span.user-post__published > time:nth-child(1)", "datetime"],
-    "purchase_date": ["span.user-post__published > time:nth-child(2)", "datetime"]
+    "purchase_date": ["span.user-post__published > time:nth-child(2)", "datetime"],
 }

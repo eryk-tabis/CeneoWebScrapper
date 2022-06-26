@@ -7,7 +7,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
+<style>
+    th{
+        text-align: center;
+        padding: 3px;
+        border: black solid 1px;
+    }
+    td{
+        text-align: center;
+        padding: 3px;
+        border: black 1px solid;
+    }
+</style>
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header class="d-flex justify-content-center py-3">
@@ -16,23 +27,25 @@
     <div class="container">
     <header class="d-flex justify-content-center py-3">
       <ul class="nav nav-pills ">
-        <li class="nav-item"><a href="{{ url_for("index") }}" class="nav-link text-warning" >Home</a></li>
-        <li class="nav-item"><a href="{{ url_for("extract") }}" class="nav-link text-warning">Extract</a></li>
-        <li class="nav-item"><a href="{{ url_for("products") }}" class="nav-link text-warning">Products</a></li>
-        <li class="nav-item"><a href="{{ url_for("author") }}" class="nav-link text-warning">Author</a></li>
+        <li class="nav-item"><a href="{{ url_for("index") }}" class="nav-link text-warning" >Strona główna</a></li>
+        <li class="nav-item"><a href="{{ url_for("extract") }}" class="nav-link text-warning">Ekstrakcja opinii</a></li>
+        <li class="nav-item"><a href="{{ url_for("products") }}" class="nav-link text-warning">Lista produktów</a></li>
+        <li class="nav-item"><a href="{{ url_for("author") }}" class="nav-link text-warning">O autorze</a></li>
       </ul>
     </header>
   </div>
     <div>
     <div class="container-fluid pb-3">
     <div class="d-grid gap-3" style="grid-template-columns: 2fr 3fr;">
-      <div class="bg-light border rounded-3" style="min-height: 60vh">
+      <div class="bg-light border rounded-3" style="min-height: 60vh; font-size: 20px">
         {% block content %}
 
         {% endblock %}
       </div>
-      <div class="bg-light border rounded-3">
+      <div class="bg-light border rounded-3" style="max-width: 100%" >
+        {% block content2 %}
 
+        {% endblock %}
       </div>
     </div>
   </div>

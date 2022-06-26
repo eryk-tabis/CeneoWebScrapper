@@ -1,7 +1,7 @@
 from ..utils import get_item
 from app.parameters import selectors
 class Opinion:
-    def __init__(self,opinion_id=None, author=None, recomendation=None, score=None, pros=None, cons=None, usefull=None, useless=None, publish_date=None, purchase_date=None):
+    def __init__(self,opinion_id=0, author=None, recomendation=None, score=None, pros=None, cons=None, usefull=None, useless=None, publish_date=None, purchase_date=None):
         self.opinion_id = opinion_id
         self.author = author
         self.recomendation = recomendation
@@ -11,7 +11,7 @@ class Opinion:
         self.usefull = usefull
         self.useless = useless
         self.publish_date = publish_date
-        self.publish_date = purchase_date
+        self.purchase_date = purchase_date
 
     def __str__(self):
         return f'Author is {self.author},' \
@@ -34,17 +34,8 @@ class Opinion:
                f' (Purchase date {self.purchase_date})'
 
     def to_dict(self):
-        return {
-            "author": self.author,
-            "recomendation": self.recomendation,
-            "score": self.score,
-            "pros": self.pros,
-            "cons": self.cons,
-            "usefull": self.usefull,
-            "useless": self.useless,
-            "publish_date": self.publish_date,
-            "purchase_date": self.purchase_date
-        }
+        return {"opinion_id": self.opinion_id} | {key: getattr(self, key) for key in selectors.keys()}
+
     def extract_opinion(self, opinion):
         for key, value in selectors.items():
             setattr(self,key, get_item(opinion, *value))

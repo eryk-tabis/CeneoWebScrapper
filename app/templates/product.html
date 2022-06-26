@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<ul class="list-group">
-    {% for key, value in stats.items() %}
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    {{ key }}
-    <span class="badge bg-primary rounded-pill">{{ value }}</span>
-  </li>
-    {% endfor %}
-</ul>
     <div class="container">
   <div class="row">
     <div class="col">
@@ -19,4 +11,17 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block content2 %}
+    <div style="overflow: scroll; max-height: 60vh; width: 100%">
+    {% for table in tables %}
+            {{ table|safe }}
+    </div>
+{% endfor %}
+    <div class="d-flex justify-content-start align-items-start mt-3">
+    <button type="button" class="btn btn-warning me-3" onclick="window.location.href='/static/opinions/{{ product_id }}.json'">JSON</button>
+    <button type="button" class="btn btn-warning me-3" onclick="window.location.href='/static/opinions/{{ product_id }}.csv'">CSV</button>
+    <button type="button" class="btn btn-warning" onclick="window.location.href='/static/opinions/{{ product_id }}.xlsx'">XLSX</button>
+    </div>
 {% endblock %}
